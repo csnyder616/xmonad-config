@@ -6,5 +6,12 @@ import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
 
 main = do
-	xmproc <- spawnPipe "xmobar /home/csnyder/.xmonad/xmobar.config"
+	xmproc <- spawnPipe "xmobar /home/csnyder/.xmonad/xmobarrc"
 	xmonad $ defaultConfig
+		{ manageHook = manageDocks <+> manageHook defaultConfig
+        	, layoutHook = avoidStruts  $  layoutHook defaultConfig
+		, logHook = dynamicLogWithPP xmobarPP
+                        { ppOutput = hPutStrLn xmproc
+                	, ppTitle = xmobarColor "green" "" . shorten 50
+                	}
+        	}
