@@ -1,4 +1,4 @@
-Config { font = "-misc-fixed-*-*-*-*-14-*-*-*-*-*-*-*"
+Config { font = "xft:Ubuntu Mono-11:"
        , borderColor = "black"
        , border = TopB
        , bgColor = "black"
@@ -14,9 +14,14 @@ Config { font = "-misc-fixed-*-*-*-*-14-*-*-*-*-*-*-*"
                     , Run Swap [] 10
     		    , Run Date "%a %F %H:%M" "date" 10
                     , Run Wireless "wlan0" ["-L", "30", "-H", "80", "--high","green","--low","red"] 10
-                    , Run Battery ["-t", "<acstatus><watts> (<left>%)"] 10
+                    , Run Battery ["-t", "<acstatus> <watts> <left>%",
+                                   "-L", "10", "-H", "60",
+                                   "--normal", "yellow", "--low", "red", "--high", "green",
+                                   "--", "-O", "<fc=blue>Charging</fc>",
+                                   "-i", "<fc=green>Charged</fc>",
+                                   "-o", "<fc=orange>Discharging</fc>"] 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%cpu% | %memory% %swap% | %dynnetwork% %wlan0wi% | %battery% }{ %KGRR% | <fc=#ee9a00>%date%</fc>"
+       , template = "%cpu% ∙ %memory% ∙ %swap% ∙ %dynnetwork% %wlan0wi% ∙ %battery% }{ %KGRR% ∙ <fc=#ee9a00>%date%</fc>"
        }
