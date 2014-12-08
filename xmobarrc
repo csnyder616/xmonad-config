@@ -7,7 +7,7 @@ Config { font = "xft:Ubuntu Mono-11:"
        , lowerOnStart = True
        , persistent = False
        , hideOnStart = False
-       , commands = [ Run Weather "KGRR" ["-t","KGRR: <tempF>F","-L","50","-H","80","--normal","green","--high","red","--low","lightblue"] 36000
+       , commands = [ Run Weather "KGRR" ["-t","KGRR: <tempF>F <skyCondition>","-L","50","-H","80","--normal","green","--high","red","--low","lightblue"] 36000
                     , Run DynNetwork ["-L","0","-H","32","--normal","green","--high","red"] 10
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
@@ -21,8 +21,9 @@ Config { font = "xft:Ubuntu Mono-11:"
                                    "-i", "<fc=green>Charged</fc>",
                                    "-o", "<fc=orange>Discharging</fc>"] 10
                     , Run Com "/home/csnyder/.xmonad/scripts/xmobar-volume" [] "volume" 10 
+                    , Run Com "dropbox" ["status"] "dropbox" 50
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%cpu% ∙ %memory% ∙ %swap% ∙ %dynnetwork% %wlan0wi% ∙ %battery% ∙ Volume: %volume%}{ %KGRR% ∙ <fc=#ee9a00>%date%</fc>"
+       , template = "%cpu% ∙ %memory% ∙ %swap% ∙ %dynnetwork% %wlan0wi% ∙ %battery% ∙ Volume: %volume% ∙ Dropbox: %dropbox%}{ %KGRR% ∙ <fc=#ee9a00>%date%</fc>"
        }
