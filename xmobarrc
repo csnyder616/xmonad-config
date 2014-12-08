@@ -20,8 +20,9 @@ Config { font = "xft:Ubuntu Mono-11:"
                                    "--", "-O", "<fc=blue>Charging</fc>",
                                    "-i", "<fc=green>Charged</fc>",
                                    "-o", "<fc=orange>Discharging</fc>"] 10
+                    , Run Com "/home/csnyder/.xmonad/scripts/xmobar-volume" [] "volume" 10 
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%cpu% ∙ %memory% ∙ %swap% ∙ %dynnetwork% %wlan0wi% ∙ %battery% }{ %KGRR% ∙ <fc=#ee9a00>%date%</fc>"
+       , template = "%cpu% ∙ %memory% ∙ %swap% ∙ %dynnetwork% %wlan0wi% ∙ %battery% ∙ Volume: %volume%}{ %KGRR% ∙ <fc=#ee9a00>%date%</fc>"
        }

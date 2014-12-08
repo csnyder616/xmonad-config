@@ -4,5 +4,5 @@ for PID in `pgrep xmobar`; do
     kill ${PID} > /dev/null &
 done
 
-/usr/bin/xmobar "$1" &
+/home/csnyder/.cabal/bin/xmobar "$1" &
 
